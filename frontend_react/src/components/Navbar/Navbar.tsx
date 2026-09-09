@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { HiArrowRight, HiMenuAlt4, HiX } from 'react-icons/hi';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import { contact } from '../../data/portfolio';
 import { images } from '../../constants';
 import './Navbar.scss';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const links = ['about', 'work', 'skills', 'contact'];
+  const links = ['work', 'about', 'skills', 'contact'];
 
   useEffect(() => {
     const closeMenu = (event: KeyboardEvent) => {
@@ -32,7 +33,7 @@ const Navbar = () => {
         ))}
       </ul>
 
-      <a className="app__navbar-cta" href="mailto:onlyonewsd@icloud.com">
+      <a className="app__navbar-cta" href={`mailto:${contact.email}`}>
         Let&apos;s talk <HiArrowRight aria-hidden="true" />
       </a>
 

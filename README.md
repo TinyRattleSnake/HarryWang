@@ -1,49 +1,58 @@
-# Harry Wang — Frontend Developer Portfolio
+# Harry Wang — Software Developer
 
-A personal portfolio presenting my frontend development work, technical skills and contact information. The site is designed for the Australian job market with a focus on responsive layouts, accessibility and maintainable code.
+My personal portfolio, featuring web application development and generative AI research.
 
-## Highlights
+[Visit the portfolio](https://tinyrattlesnake.github.io/HarryWang/)
 
-- Responsive layout for mobile, tablet and desktop screens
-- Semantic navigation and accessible interactive controls
-- Typed project and skills data
-- Subtle interface animations with reduced-motion support
-- Automated linting, type checking, tests and production builds
-- Continuous deployment with GitHub Actions and GitHub Pages
+## Selected projects
 
-## Stack
+### Heritage Fire Watch
 
-- React 19 and TypeScript
-- Vite 8
-- Sass
-- Framer Motion
-- Vitest and Testing Library
+A GIS web application for cultural heritage fire vulnerability in Albany, Western Australia. UWA team capstone, with my role as Project Manager & Tech Lead.
 
-The repository also includes a Sanity Studio workspace for structured portfolio content management.
+React, TypeScript, Leaflet, Flask and PostgreSQL.
+
+[Live application](https://heritage-fire-watch.vercel.app/) · [Repository](https://github.com/TinyRattleSnake/Fire-Vulnerability-App)
+
+The live application requires sign-in and administrator approval.
+
+### CloudNet
+
+A pipeline for style-controllable indoor scene generation using Stable Diffusion, ControlNet and a custom Style IP-Adapter. Includes model training, generation, evaluation and ablation workflows.
+
+Python, PyTorch, Hugging Face Diffusers, Accelerate and Slurm.
+
+[Repository and experiments](https://github.com/CloudWang-UWA/CloudNet)
+
+## Portfolio stack
+
+React 19, TypeScript, Vite, Sass and Framer Motion. Automated checks use ESLint, Vitest and Testing Library; GitHub Actions deploys to GitHub Pages.
 
 ## Run locally
 
+Requires Node.js 22.12 or later.
+
 ```bash
 cd frontend_react
-npm install
+npm ci
 npm run dev
 ```
 
-Open the local URL printed by Vite, normally `http://localhost:5173`.
+## Checks and production build
 
-## Quality checks
+From the frontend directory:
 
 ```bash
 npm run lint
 npm run typecheck
 npm run test
-npm run build
+npm run build -- --base=/HarryWang/
 ```
 
-## Updating the content
+## Content
 
-Portfolio projects, skill groups and the development timeline are defined in `frontend_react/src/data/portfolio.ts`. Personal links and contact details are located in the header, navigation and footer components.
+Project descriptions, links, skills and education are defined in `frontend_react/src/data/portfolio.ts`. Project images are served from `frontend_react/public/projects/`. The main content is local and does not require the Sanity workspace.
 
-## Security
+## Contact
 
-Environment variables and local configuration files are excluded from version control. Sensitive credentials should never be included in client-side code.
+[Email](mailto:harry.shudong.wang@gmail.com) · [LinkedIn](https://www.linkedin.com/in/harry-wang-9a6a27376/) · [GitHub](https://github.com/TinyRattleSnake)

@@ -7,3 +7,6 @@ dist/
 !.env.example
 *.tar.gz
 *.log
+# Local source screenshots; publish only prepared project assets.
+/images/
+/tmp/

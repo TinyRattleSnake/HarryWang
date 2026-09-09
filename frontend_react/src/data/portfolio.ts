@@ -1,71 +1,83 @@
-export type ProjectCategory = 'Frontend' | 'CMS';
+export const contact = {
+  email: 'harry.shudong.wang@gmail.com',
+  github: 'https://github.com/TinyRattleSnake',
+  linkedin: 'https://www.linkedin.com/in/harry-wang-9a6a27376/',
+};
+
+export interface ProjectImage {
+  file: string;
+  label: string;
+  alt: string;
+  caption: string;
+}
 
 export interface Project {
+  id: string;
   title: string;
   eyebrow: string;
-  year: string;
-  category: ProjectCategory;
+  period: string;
+  subtitle: string;
   summary: string;
-  challenge: string;
-  solution: string;
+  highlights: { title: string; text: string }[];
   tags: string[];
-  href: string;
+  links: { label: string; href: string }[];
+  note?: string;
+  images: ProjectImage[];
 }
 
 export const projects: Project[] = [
   {
-    title: 'Developer Portfolio',
-    eyebrow: 'Personal project · Frontend',
-    year: '2026',
-    category: 'Frontend',
-    summary: 'A responsive personal portfolio designed to present projects, technical skills and professional information clearly.',
-    challenge: 'Present varied information in a focused experience that works well across devices and remains easy to maintain.',
-    solution: 'Built a typed component system with responsive layouts, accessible controls, project filtering and automated quality checks.',
-    tags: ['React', 'TypeScript', 'Vite', 'Accessibility'],
-    href: 'https://github.com/TinyRattleSnake/HarryWang',
+    id: 'fire-watch',
+    title: 'Heritage Fire Watch',
+    eyebrow: 'Full-stack GIS · UWA team project',
+    period: 'Feb – Jun 2026',
+    subtitle: 'Understanding fire risk. Protecting cultural heritage.',
+    summary: 'A GIS web application for UWA Archaeology to visualise fire vulnerability around cultural heritage sites in Albany, Western Australia, helping land managers identify vulnerable sites and prioritise their protection.',
+    highlights: [
+      { title: 'Project Manager & Tech Lead', text: 'Led the team from requirements and architecture through code review, testing, deployment and the final client demonstration.' },
+      { title: 'Connected spatial workflows', text: 'An interactive Leaflet map, rule-based risk assessment, site insights and an upload workflow, backed by Flask REST APIs and PostgreSQL.' },
+      { title: 'Delivery', text: 'React frontend deployed on Vercel and Flask backend on Render. The capstone project received a High Distinction.' },
+    ],
+    tags: ['React', 'TypeScript', 'Leaflet', 'Python', 'Flask', 'PostgreSQL'],
+    links: [
+      { label: 'Visit live app', href: 'https://heritage-fire-watch.vercel.app/' },
+      { label: 'View code', href: 'https://github.com/TinyRattleSnake/Fire-Vulnerability-App' },
+    ],
+    note: 'The live application requires sign-in and administrator approval.',
+    images: [{ file: 'fire-watch-fuel.webp', label: 'Map dashboard', alt: 'Heritage Fire Watch GIS dashboard with fuel-type layers, map controls and an OpenStreetMap basemap of the Albany region.', caption: 'Map dashboard · Regional fuel layers and map controls.' }],
   },
   {
-    title: 'Portfolio Content Studio',
-    eyebrow: 'Content platform · CMS',
-    year: '2024',
-    category: 'CMS',
-    summary: 'A structured content workspace for managing portfolio projects, skills, experience and contact information.',
-    challenge: 'Portfolio content needed to be editable without changing component code every time.',
-    solution: 'Designed reusable Sanity schemas and connected them to React views through GROQ queries and a consistent content model.',
-    tags: ['Sanity', 'GROQ', 'Schema design', 'React'],
-    href: 'https://github.com/TinyRattleSnake/HarryWang/tree/main/backend_sanity',
+    id: 'cloudnet',
+    title: 'CloudNet',
+    eyebrow: 'Generative AI · UWA research',
+    period: 'Jul 2025 – Jun 2026',
+    subtitle: 'One layout. Multiple visual styles.',
+    summary: 'A diffusion-based pipeline that generates indoor scenes from a semantic layout, text prompt and style reference. It explores how synthetic images with varied appearances can supplement data for computer vision models.',
+    highlights: [
+      { title: 'Style-controllable generation', text: 'Combines Stable Diffusion and ControlNet with a custom Style IP-Adapter, adding a learnable style embedding module to guide image appearance.' },
+      { title: 'Training through evaluation', text: 'Implemented training, generation and evaluation workflows in PyTorch, Diffusers and Accelerate, running experiments on V100 GPUs on UWA’s Kaya cluster with Slurm.' },
+      { title: 'Experiments', text: 'Compared results with FreestyleNet using mIoU and CLIP-based metrics, alongside visual comparisons and ablation studies of the style embedding module.' },
+    ],
+    tags: ['Python', 'PyTorch', 'Diffusers', 'ControlNet', 'IP-Adapter', 'Slurm'],
+    links: [{ label: 'View code & experiments', href: 'https://github.com/CloudWang-UWA/CloudNet' }],
+    images: [
+      { file: 'cloudnet-results.webp', label: 'Generated scenes', alt: 'CloudNet results: each row shares a semantic mask, with generated scenes in Cozy, Messy, Classic, Luxurious and Van Gogh styles.', caption: 'Each row follows one semantic layout across five styles: Cozy, Messy, Classic, Luxurious and Van Gogh.' },
+      { file: 'cloudnet-architecture.webp', label: 'Architecture', alt: 'CloudNet architecture connecting a Style IP-Adapter and learnable style embedding with text conditioning, ControlNet and a Stable Diffusion U-Net.', caption: 'Architecture · Layout conditioning and learned style embeddings guide the diffusion process.' },
+    ],
   },
+  // HTML5 Games: reserved for future screenshots, descriptions and project links.
+  // Keep this section unpublished until its content is ready.
 ];
 
 export const skillGroups = [
-  {
-    title: 'Frontend',
-    skills: ['React', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS / Sass', 'Vite'],
-  },
-  {
-    title: 'Engineering',
-    skills: ['Git & GitHub', 'Responsive UI', 'Accessibility', 'REST APIs', 'Component testing', 'CI-ready workflows'],
-  },
-  {
-    title: 'Additional tools',
-    skills: ['Node.js', 'Sanity CMS', 'GraphQL', 'Cloud deployment', 'Performance optimisation'],
-  },
+  { title: 'Frontend', skills: ['TypeScript / JavaScript', 'React', 'HTML / CSS', 'Tailwind CSS', 'Leaflet / WebGL'] },
+  { title: 'Backend & Data', skills: ['Python / Java', 'Flask', 'REST APIs', 'SQL / PostgreSQL', 'Node.js'] },
+  { title: 'AI & Research', skills: ['PyTorch / TensorFlow', 'Hugging Face Diffusers', 'Stable Diffusion', 'ControlNet / IP-Adapter', 'Slurm / GPU workflows'] },
+  { title: 'Development tools', skills: ['Git', 'Linux / Shell', 'Unit testing', 'Vercel / Render', 'Figma'] },
 ] as const;
 
-export const timeline = [
-  {
-    period: 'Now',
-    title: 'Building production-ready frontend work',
-    detail: 'Focused on React, TypeScript, testing and accessible product experiences for opportunities in Australia.',
-  },
-  {
-    period: '2024',
-    title: 'React + Sanity content platform',
-    detail: 'Developed a responsive React interface supported by structured content models and reusable components.',
-  },
-  {
-    period: 'Foundation',
-    title: 'Web development fundamentals',
-    detail: 'Built a strong foundation in JavaScript, semantic HTML, CSS, Git and modern web development practices.',
-  },
+export const education = [
+  { university: 'The University of Western Australia', degree: 'Master of Information Technology', detail: '2024–2026 · WAM 80.6 · GPA 6.5/7 · Global Excellence Scholarship' },
+  { university: 'Carnegie Mellon University', degree: 'M.S. Civil and Environmental Engineering', detail: '2015–2016' },
+  { university: 'Jilin University', degree: 'B.Eng. Civil Engineering · Second Major in Finance', detail: '2011–2015' },
 ] as const;

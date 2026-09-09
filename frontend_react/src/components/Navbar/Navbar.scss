@@ -12,6 +12,8 @@
   border-bottom: 1px solid rgba(21, 34, 32, 0.1);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+
+  @media screen and (max-width: 820px) { grid-template-columns: 1fr auto; }
 }
 
 .app__navbar-logo {

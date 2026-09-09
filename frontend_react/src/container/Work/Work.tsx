@@ -1,76 +1,67 @@
-import { useMemo, useState } from 'react';
-import { HiArrowRight } from 'react-icons/hi';
-import { motion } from 'framer-motion';
-import { projects, type ProjectCategory } from '../../data/portfolio';
+import { useState } from 'react';
+import { HiArrowRight, HiExternalLink } from 'react-icons/hi';
+import { projects, type Project } from '../../data/portfolio';
 import './Work.scss';
 
-type Filter = 'All' | ProjectCategory;
-
-const Work = () => {
-  const [activeFilter, setActiveFilter] = useState<Filter>('All');
-  const filters: Filter[] = ['All', 'Frontend', 'CMS'];
-  const visibleProjects = useMemo(
-    () => activeFilter === 'All' ? projects : projects.filter((project) => project.category === activeFilter),
-    [activeFilter],
-  );
+const ProjectGallery = ({ project }: { project: Project }) => {
+  const [selected, setSelected] = useState(0);
+  const figure = project.images[selected];
+  const src = `${import.meta.env.BASE_URL}projects/${figure.file}`;
 
   return (
-    <section id="work" className="section work" aria-labelledby="work-title">
-      <div className="section__intro section__intro--row">
-        <div>
-          <p className="section__kicker">Selected work</p>
-          <h2 id="work-title">Proof of <em>how I think.</em></h2>
+    <div className="project__gallery">
+      <div className="project__gallery-bar">
+        <span>{project.title} / Preview</span>
+        <a href={src} target="_blank" rel="noreferrer" aria-label={`Open ${project.title} ${figure.label} at full size (opens in a new tab)`}>
+          Full size <HiExternalLink aria-hidden="true" />
+        </a>
+      </div>
+      {project.images.length > 1 && (
+        <div className="project__views" role="group" aria-label={`${project.title} images`}>
+          {project.images.map((item, index) => (
+            <button key={item.file} type="button" aria-pressed={index === selected} onClick={() => setSelected(index)}>{item.label}</button>
+          ))}
         </div>
-        <p className="section__aside">A selection of frontend and content platform work, including the goals, approach and technologies behind each project.</p>
-      </div>
-
-      <div className="work__filters" aria-label="Filter projects">
-        {filters.map((filter) => (
-          <button
-            key={filter}
-            type="button"
-            aria-pressed={activeFilter === filter}
-            onClick={() => setActiveFilter(filter)}
-          >
-            {filter}
-          </button>
-        ))}
-      </div>
-
-      <div className="work__list" aria-live="polite">
-        {visibleProjects.map((project, index) => (
-          <motion.article
-            className="project"
-            key={project.title}
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.18 }}
-            transition={{ duration: 0.5, delay: index * 0.08 }}
-          >
-            <div className="project__visual" aria-hidden="true">
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <strong>{project.category}</strong>
-              <div>{project.tags.slice(0, 3).map((tag) => <i key={tag}>{tag}</i>)}</div>
-            </div>
-
-            <div className="project__content">
-              <div className="project__meta"><span>{project.eyebrow}</span><span>{project.year}</span></div>
-              <h3>{project.title}</h3>
-              <p className="project__summary">{project.summary}</p>
-              <dl>
-                <div><dt>Challenge</dt><dd>{project.challenge}</dd></div>
-                <div><dt>Approach</dt><dd>{project.solution}</dd></div>
-              </dl>
-              <ul aria-label="Technologies">{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
-              <a href={project.href} target="_blank" rel="noreferrer">
-                View project on GitHub <HiArrowRight aria-hidden="true" />
-              </a>
-            </div>
-          </motion.article>
-        ))}
-      </div>
-    </section>
+      )}
+      <figure>
+        <a href={src} target="_blank" rel="noreferrer" aria-label={`Enlarge ${project.title} ${figure.label} (opens in a new tab)`}>
+          <img src={src} alt={figure.alt} loading="lazy" decoding="async" />
+        </a>
+        <figcaption aria-live="polite">{figure.caption}</figcaption>
+      </figure>
+    </div>
   );
 };
+
+const Work = () => (
+  <section id="work" className="section work" aria-labelledby="work-title">
+    <div className="section__intro section__intro--row">
+      <div><p className="section__kicker">Selected projects</p><h2 id="work-title">From spatial data<br />to <em>generative AI.</em></h2></div>
+      <p className="section__aside">Web applications and research, with a focus on practical problems and the systems behind them.</p>
+    </div>
+    <div className="work__list">
+      {projects.map((project, index) => (
+        <article className="project" id={project.id} key={project.id} aria-labelledby={`${project.id}-title`}>
+          <div className="project__heading">
+            <span className="project__number">0{index + 1}</span>
+            <div><p className="project__meta">{project.eyebrow} <span>{project.period}</span></p><h3 id={`${project.id}-title`}>{project.title}</h3><p className="project__subtitle">{project.subtitle}</p></div>
+          </div>
+          <ProjectGallery project={project} />
+          <div className="project__details">
+            <div className="project__overview">
+              <p className="project__summary">{project.summary}</p>
+              <ul className="project__tags" aria-label={`${project.title} technologies`}>{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
+              <div className="project__links">{project.links.map(link => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label}<HiArrowRight aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>)}</div>
+              {project.note && <p className="project__note">{project.note}</p>}
+            </div>
+            <dl className="project__highlights">{project.highlights.map(item => <div key={item.title}><dt>{item.title}</dt><dd>{item.text}</dd></div>)}</dl>
+          </div>
+        </article>
+      ))}
+      {/* HTML5 Games: reserved, intentionally not rendered until media and copy are ready. */}
+    </div>
+    <p className="work__colophon">This portfolio is built with React and TypeScript. <a href="https://github.com/TinyRattleSnake/HarryWang" target="_blank" rel="noreferrer">View source <span className="sr-only">(opens in a new tab)</span><HiArrowRight aria-hidden="true" /></a></p>
+  </section>
+);
 
 export default Work;
