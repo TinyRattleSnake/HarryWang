@@ -78,6 +78,4 @@ export const skillGroups = [
 
 export const education = [
   { university: 'The University of Western Australia', degree: 'Master of Information Technology', detail: '2024–2026 · WAM 80.6 · GPA 6.5/7 · Global Excellence Scholarship' },
-  { university: 'Carnegie Mellon University', degree: 'M.S. Civil and Environmental Engineering', detail: '2015–2016' },
-  { university: 'Jilin University', degree: 'B.Eng. Civil Engineering · Second Major in Finance', detail: '2011–2015' },
 ] as const;
