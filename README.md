@@ -1,6 +1,6 @@
 # Harry Wang — Software Developer
 
-My personal portfolio, featuring web application development and generative AI research.
+My personal portfolio, featuring full-stack web applications, commercial TypeScript development skills and generative AI research.
 
 [Visit the portfolio](https://tinyrattlesnake.github.io/HarryWang/)
 
@@ -14,7 +14,9 @@ React, TypeScript, Leaflet, Flask and PostgreSQL.
 
 [Live application](https://heritage-fire-watch.vercel.app/) · [Repository](https://github.com/TinyRattleSnake/Fire-Vulnerability-App)
 
-The live application requires sign-in and administrator approval.
+Registration required. New accounts can sign in immediately.
+
+Features include Python risk assessment, an interactive GIS dashboard, CSV/Excel export, validated site uploads and PostgreSQL persistence through SQLAlchemy. Authentication uses password hashing and token-based sessions, with server-side permission checks for administrator actions. GitHub Actions runs setup, build, health and backend-test checks; Vercel and Render host the application.
 
 ### CloudNet
 

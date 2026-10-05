@@ -22,6 +22,7 @@ export interface Project {
   tags: string[];
   links: { label: string; href: string }[];
   note?: string;
+  layout?: 'compact';
   images: ProjectImage[];
 }
 
@@ -29,22 +30,26 @@ export const projects: Project[] = [
   {
     id: 'fire-watch',
     title: 'Heritage Fire Watch',
-    eyebrow: 'Full-stack GIS · UWA team project',
+    eyebrow: 'UWA client project · Project Manager & Technical Lead',
+    layout: 'compact',
     period: 'Feb – Jun 2026',
     subtitle: 'Understanding fire risk. Protecting cultural heritage.',
     summary: 'A GIS web application for UWA Archaeology to visualise fire vulnerability around cultural heritage sites in Albany, Western Australia, helping land managers identify vulnerable sites and prioritise their protection.',
     highlights: [
-      { title: 'Project Manager & Tech Lead', text: 'Led the team from requirements and architecture through code review, testing, deployment and the final client demonstration.' },
-      { title: 'Connected spatial workflows', text: 'An interactive Leaflet map, rule-based risk assessment, site insights and an upload workflow, backed by Flask REST APIs and PostgreSQL.' },
-      { title: 'Delivery', text: 'React frontend deployed on Vercel and Flask backend on Render. The capstone project received a High Distinction.' },
+      { title: 'Risk assessment & map workflows', text: 'Implemented a Python module combining environmental hazard and heritage-site vulnerability into risk layers. Built a React/TypeScript dashboard with Leaflet and CSV/Excel export for selected map areas.' },
+      { title: 'Validated data & authentication', text: 'Developed site uploads with input validation and PostgreSQL persistence through SQLAlchemy, alongside password hashing, token-based sessions and server-side permission checks for administrator actions.' },
+      { title: 'Client delivery & automated checks', text: 'Led team delivery and the final client presentation. Configured GitHub Actions for macOS setup checks, frontend builds, backend health checks and automated backend tests, with deployments to Vercel and Render.' },
     ],
     tags: ['React', 'TypeScript', 'Leaflet', 'Python', 'Flask', 'PostgreSQL'],
     links: [
-      { label: 'Visit live app', href: 'https://heritage-fire-watch.vercel.app/' },
-      { label: 'View code', href: 'https://github.com/TinyRattleSnake/Fire-Vulnerability-App' },
+      { label: 'Try the application', href: 'https://heritage-fire-watch.vercel.app/' },
+      { label: 'View source code', href: 'https://github.com/TinyRattleSnake/Fire-Vulnerability-App' },
     ],
-    note: 'The live application requires sign-in and administrator approval.',
-    images: [{ file: 'fire-watch-fuel.webp', label: 'Map dashboard', alt: 'Heritage Fire Watch GIS dashboard with fuel-type layers, map controls and an OpenStreetMap basemap of the Albany region.', caption: 'Map dashboard · Regional fuel layers and map controls.' }],
+    note: 'Registration required. New accounts can sign in immediately.',
+    images: [
+      { file: 'fire-watch-fuel.webp', label: 'Map dashboard', alt: 'Heritage Fire Watch GIS dashboard with fuel-type layers, map controls and an OpenStreetMap basemap of the Albany region.', caption: 'Regional fuel layers and map controls. Open at full size to explore the interface.' },
+      { file: 'fire-watch-upload.jpg', label: 'Site upload', alt: 'Heritage Fire Watch empty site-upload form with site details, optional reference photo and location fields.', caption: 'Record site details, location and an optional reference photo in one workflow.' },
+    ],
   },
   {
     id: 'cloudnet',
@@ -71,11 +76,11 @@ export const projects: Project[] = [
 
 export const skillGroups = [
   { title: 'Frontend', skills: ['TypeScript / JavaScript', 'React', 'HTML / CSS', 'Tailwind CSS', 'Leaflet / WebGL'] },
-  { title: 'Backend & Data', skills: ['Python / Java', 'Flask', 'REST APIs', 'SQL / PostgreSQL', 'Node.js'] },
+  { title: 'Backend & Data', skills: ['Python / Java', 'Flask / REST APIs', 'SQL / PostgreSQL', 'SQLAlchemy', 'Node.js / MongoDB'] },
   { title: 'AI & Research', skills: ['PyTorch / TensorFlow', 'Hugging Face Diffusers', 'Stable Diffusion', 'ControlNet / IP-Adapter', 'Slurm / GPU workflows'] },
-  { title: 'Development tools', skills: ['Git', 'Linux / Shell', 'Unit testing', 'Vercel / Render', 'Figma'] },
+  { title: 'Development tools', skills: ['Git / SVN', 'Linux / Shell', 'Vite / GitHub Actions', 'Automated testing', 'Vercel / Render'] },
 ] as const;
 
 export const education = [
-  { university: 'The University of Western Australia', degree: 'Master of Information Technology', detail: '2024–2026 · WAM 80.6 · GPA 6.5/7 · Global Excellence Scholarship' },
+  { university: 'The University of Western Australia', degree: 'Master of Information Technology', detail: '2024–2026 · WAM 80.6 · Global Excellence Scholarship' },
 ] as const;

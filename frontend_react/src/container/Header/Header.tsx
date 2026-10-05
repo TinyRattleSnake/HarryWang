@@ -18,13 +18,14 @@ const Header = () => {
       <p className="hero__eyebrow"><span /> Open to opportunities in Australia</p>
       <h1>
         Software developer.<br />
-        <em>Web applications.</em><br />
-        Generative AI.
+        <em>Full-stack web applications.</em>
       </h1>
       <p className="hero__intro">
-        I&apos;m Harry Wang, a software developer based in Perth and a UWA Master of
-        Information Technology graduate. My work spans full-stack web applications and generative AI.
+        I&apos;m Harry Wang, a software developer with over two years of commercial
+        TypeScript experience. I build full-stack applications with React, Flask and
+        PostgreSQL, including a deployed web application for a UWA archaeology client.
       </p>
+      <p className="hero__availability">Australian permanent resident · No sponsorship required · Open to relocation</p>
       <div className="hero__actions">
         <a className="button button--primary" href="#work">
           View projects <HiArrowDown aria-hidden="true" />

@@ -36,22 +36,22 @@ const ProjectGallery = ({ project }: { project: Project }) => {
 const Work = () => (
   <section id="work" className="section work" aria-labelledby="work-title">
     <div className="section__intro section__intro--row">
-      <div><p className="section__kicker">Selected projects</p><h2 id="work-title">From spatial data<br />to <em>generative AI.</em></h2></div>
-      <p className="section__aside">Web applications and research, with a focus on practical problems and the systems behind them.</p>
+      <div><p className="section__kicker">Selected projects</p><h2 id="work-title">Applications built<br /><em>around real problems.</em></h2></div>
+      <p className="section__aside">A client-facing full-stack application, followed by independent research in controllable image generation.</p>
     </div>
     <div className="work__list">
       {projects.map((project, index) => (
-        <article className="project" id={project.id} key={project.id} aria-labelledby={`${project.id}-title`}>
+        <article className={`project${project.layout === 'compact' ? ' project--compact' : ''}`} id={project.id} key={project.id} aria-labelledby={`${project.id}-title`}>
           <div className="project__heading">
             <span className="project__number">0{index + 1}</span>
             <div><p className="project__meta">{project.eyebrow} <span>{project.period}</span></p><h3 id={`${project.id}-title`}>{project.title}</h3><p className="project__subtitle">{project.subtitle}</p></div>
           </div>
-          <ProjectGallery project={project} />
-          <div className="project__details">
+          <div className="project__content">
+            <ProjectGallery project={project} />
             <div className="project__overview">
               <p className="project__summary">{project.summary}</p>
               <ul className="project__tags" aria-label={`${project.title} technologies`}>{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
-              <div className="project__links">{project.links.map(link => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label}<HiArrowRight aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>)}</div>
+              <div className="project__links">{project.links.map((link, linkIndex) => <a className={project.layout === 'compact' && linkIndex === 0 ? 'project__primary-link' : undefined} key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label}<HiArrowRight aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>)}</div>
               {project.note && <p className="project__note">{project.note}</p>}
             </div>
             <dl className="project__highlights">{project.highlights.map(item => <div key={item.title}><dt>{item.title}</dt><dd>{item.text}</dd></div>)}</dl>
