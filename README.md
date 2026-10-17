@@ -1,4 +1,4 @@
-# Harry Wang — Software Developer
+# Harry Wang — Software Engineer
 
 My personal portfolio, featuring full-stack web applications, commercial TypeScript development skills and generative AI research.
 
@@ -24,7 +24,7 @@ A pipeline for style-controllable indoor scene generation using Stable Diffusion
 
 Python, PyTorch, Hugging Face Diffusers, Accelerate and Slurm.
 
-[Repository and experiments](https://github.com/CloudWang-UWA/CloudNet)
+[Explore CloudNet Research](https://cloudwang-uwa.github.io/CloudNet/) · [Repository and experiments](https://github.com/CloudWang-UWA/CloudNet)
 
 ## Portfolio stack
 

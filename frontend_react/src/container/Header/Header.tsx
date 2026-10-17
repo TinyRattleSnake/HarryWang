@@ -16,14 +16,11 @@ const Header = () => {
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <p className="hero__eyebrow"><span /> Open to opportunities in Australia</p>
-      <h1>
-        Software developer.<br />
-        <em>Full-stack web applications.</em>
-      </h1>
+      <h1>Software Engineer</h1>
       <p className="hero__intro">
-        I&apos;m Harry Wang, a software developer with over two years of commercial
-        TypeScript experience. I build full-stack applications with React, Flask and
-        PostgreSQL, including a deployed web application for a UWA archaeology client.
+        I&apos;m Harry Wang, a software engineer with over two years of commercial
+        TypeScript experience. My work spans full-stack web applications and deep
+        learning research, including Heritage Fire Watch and CloudNet.
       </p>
       <div className="hero__actions">
         <a className="button button--primary" href="#work">

@@ -5,11 +5,12 @@ import App from './App';
 describe('portfolio', () => {
   it('provides navigation and links to the published projects', () => {
     render(<App />);
-    expect(screen.getByRole('heading', { name: /software developer/i, level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Software Engineer', level: 1 })).toBeInTheDocument();
     expect(screen.getByRole('navigation', { name: /primary navigation/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /view projects/i })).toHaveAttribute('href', '#work');
     expect(screen.getByRole('link', { name: /try the application/i })).toHaveAttribute('href', 'https://heritage-fire-watch.vercel.app/');
     expect(screen.getByRole('link', { name: /view code & experiments/i })).toHaveAttribute('href', 'https://github.com/CloudWang-UWA/CloudNet');
+    expect(screen.getByRole('link', { name: /explore cloudnet research/i })).toHaveAttribute('href', 'https://cloudwang-uwa.github.io/CloudNet/');
   });
 
   it('presents the current access requirements and compact Fire Watch preview', () => {
@@ -29,7 +30,9 @@ describe('portfolio', () => {
 
   it('keeps the profile focused on skills and the selected education', () => {
     render(<App />);
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/full-stack web applications/i);
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/^Software Engineer$/);
+    expect(screen.getByText('Specialisation: Artificial Intelligence')).toBeInTheDocument();
+    expect(screen.getByText('I enjoy building things, experimenting with different approaches, and finding ways to improve the results.')).toBeInTheDocument();
     expect(screen.queryByText(/permanent resident|sponsorship|relocation/i)).not.toBeInTheDocument();
     expect(document.querySelectorAll('.about__education article')).toHaveLength(1);
     expect(screen.getByRole('heading', { name: 'The University of Western Australia' })).toBeInTheDocument();

@@ -11,7 +11,7 @@ const Footer = () => (
       <a href={`mailto:${contact.email}`}>{contact.email} <HiArrowRight aria-hidden="true" /></a>
     </div>
     <div className="footer__bottom">
-      <p>Harry Wang · Software Developer</p>
+      <p>Harry Wang · Software Engineer</p>
       <div className="footer__socials">
         <a href={contact.linkedin} target="_blank" rel="noreferrer"><AiFillLinkedin aria-hidden="true" /> LinkedIn <span className="sr-only">(opens in a new tab)</span></a>
         <a href={contact.github} target="_blank" rel="noreferrer"><AiFillGithub aria-hidden="true" /> GitHub <span className="sr-only">(opens in a new tab)</span></a>

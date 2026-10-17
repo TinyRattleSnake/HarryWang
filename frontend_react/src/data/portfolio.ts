@@ -64,7 +64,10 @@ export const projects: Project[] = [
       { title: 'Experiments', text: 'Compared results with FreestyleNet using mIoU and CLIP-based metrics, alongside visual comparisons and ablation studies of the style embedding module.' },
     ],
     tags: ['Python', 'PyTorch', 'Diffusers', 'ControlNet', 'IP-Adapter', 'Slurm'],
-    links: [{ label: 'View code & experiments', href: 'https://github.com/CloudWang-UWA/CloudNet' }],
+    links: [
+      { label: 'Explore CloudNet Research', href: 'https://cloudwang-uwa.github.io/CloudNet/' },
+      { label: 'View code & experiments', href: 'https://github.com/CloudWang-UWA/CloudNet' },
+    ],
     images: [
       { file: 'cloudnet-results.webp', label: 'Generated scenes', alt: 'CloudNet results: each row shares a semantic mask, with generated scenes in Cozy, Messy, Classic, Luxurious and Van Gogh styles.', caption: 'Each row follows one semantic layout across five styles: Cozy, Messy, Classic, Luxurious and Van Gogh.' },
       { file: 'cloudnet-architecture.webp', label: 'Architecture', alt: 'CloudNet architecture connecting a Style IP-Adapter and learnable style embedding with text conditioning, ControlNet and a Stable Diffusion U-Net.', caption: 'Architecture · Layout conditioning and learned style embeddings guide the diffusion process.' },
@@ -82,5 +85,5 @@ export const skillGroups = [
 ] as const;
 
 export const education = [
-  { university: 'The University of Western Australia', degree: 'Master of Information Technology', detail: '2024–2026 · WAM 80.6 · Global Excellence Scholarship' },
+  { university: 'The University of Western Australia', degree: 'Master of Information Technology', specialisation: 'Artificial Intelligence', detail: '2024–2026 · WAM 80.6 · Global Excellence Scholarship' },
 ] as const;
