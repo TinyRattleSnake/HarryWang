@@ -30,7 +30,7 @@ describe('portfolio', () => {
   it('keeps the profile focused on skills and the selected education', () => {
     render(<App />);
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/full-stack web applications/i);
-    expect(screen.getByText(/no sponsorship required/i)).toBeInTheDocument();
+    expect(screen.queryByText(/permanent resident|sponsorship|relocation/i)).not.toBeInTheDocument();
     expect(document.querySelectorAll('.about__education article')).toHaveLength(1);
     expect(screen.getByRole('heading', { name: 'The University of Western Australia' })).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /resume|download/i })).not.toBeInTheDocument();

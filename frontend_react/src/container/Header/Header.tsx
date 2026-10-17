@@ -25,7 +25,6 @@ const Header = () => {
         TypeScript experience. I build full-stack applications with React, Flask and
         PostgreSQL, including a deployed web application for a UWA archaeology client.
       </p>
-      <p className="hero__availability">Australian permanent resident · No sponsorship required · Open to relocation</p>
       <div className="hero__actions">
         <a className="button button--primary" href="#work">
           View projects <HiArrowDown aria-hidden="true" />
