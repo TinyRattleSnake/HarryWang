@@ -18,7 +18,7 @@ const Header = () => {
       <p className="hero__eyebrow"><span /> Open to opportunities in Australia</p>
       <h1>Software Engineer</h1>
       <p className="hero__intro">
-        I&apos;m Harry Wang, a software engineer with over two years of commercial
+        I&apos;m Harry Wang, a software engineer with commercial
         TypeScript experience. My work spans full-stack web applications and deep
         learning research, including Heritage Fire Watch and CloudNet.
       </p>
