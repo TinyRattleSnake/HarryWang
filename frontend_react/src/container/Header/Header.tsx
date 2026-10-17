@@ -1,7 +1,6 @@
 import { HiArrowDown, HiArrowRight } from 'react-icons/hi';
 import { motion, useReducedMotion } from 'framer-motion';
 
-import { contact } from '../../data/portfolio';
 import { images } from '../../constants';
 import './Header.scss';
 
@@ -26,7 +25,7 @@ const Header = () => {
         <a className="button button--primary" href="#work">
           View projects <HiArrowDown aria-hidden="true" />
         </a>
-        <a className="button button--text" href={`mailto:${contact.email}`}>
+        <a className="button button--text" href="#contact">
           Contact me <HiArrowRight aria-hidden="true" />
         </a>
       </div>

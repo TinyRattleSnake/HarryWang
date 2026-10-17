@@ -54,6 +54,7 @@ export const projects: Project[] = [
   {
     id: 'cloudnet',
     title: 'CloudNet',
+    layout: 'compact',
     eyebrow: 'Generative AI · UWA research',
     period: 'Jul 2025 – Jun 2026',
     subtitle: 'One layout. Multiple visual styles.',

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { HiArrowRight, HiMenuAlt4, HiX } from 'react-icons/hi';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { contact } from '../../data/portfolio';
 import { images } from '../../constants';
 import './Navbar.scss';
 
@@ -33,7 +32,7 @@ const Navbar = () => {
         ))}
       </ul>
 
-      <a className="app__navbar-cta" href={`mailto:${contact.email}`}>
+      <a className="app__navbar-cta" href="#contact">
         Let&apos;s talk <HiArrowRight aria-hidden="true" />
       </a>
 

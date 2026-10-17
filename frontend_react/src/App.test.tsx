@@ -1,13 +1,17 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import App from './App';
 
 describe('portfolio', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
   it('provides navigation and links to the published projects', () => {
     render(<App />);
     expect(screen.getByRole('heading', { name: 'Software Engineer', level: 1 })).toBeInTheDocument();
     expect(screen.getByRole('navigation', { name: /primary navigation/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /view projects/i })).toHaveAttribute('href', '#work');
+    expect(screen.getByRole('link', { name: /contact me/i })).toHaveAttribute('href', '#contact');
+    expect(screen.getByRole('link', { name: /let's talk/i })).toHaveAttribute('href', '#contact');
     expect(screen.getByRole('link', { name: /try the application/i })).toHaveAttribute('href', 'https://heritage-fire-watch.vercel.app/');
     expect(screen.getByRole('link', { name: /view code & experiments/i })).toHaveAttribute('href', 'https://github.com/CloudWang-UWA/CloudNet');
     expect(screen.getByRole('link', { name: /explore cloudnet research/i })).toHaveAttribute('href', 'https://cloudwang-uwa.github.io/CloudNet/');
@@ -42,7 +46,9 @@ describe('portfolio', () => {
 
   it('switches the CloudNet gallery and full-size link together', () => {
     render(<App />);
+    expect(screen.getByRole('article', { name: 'CloudNet' })).toHaveClass('project--compact');
     const project = within(screen.getByRole('article', { name: 'CloudNet' }));
+    expect(project.getByRole('link', { name: /explore cloudnet research/i })).toHaveClass('project__primary-link');
     const architecture = project.getByRole('button', { name: 'Architecture' });
     fireEvent.click(architecture);
     expect(architecture).toHaveAttribute('aria-pressed', 'true');
@@ -50,5 +56,22 @@ describe('portfolio', () => {
     expect(project.getByRole('link', { name: /open cloudnet architecture at full size/i })).toHaveAttribute('href', expect.stringContaining('projects/cloudnet-architecture.webp'));
     fireEvent.click(project.getByRole('button', { name: 'Generated scenes' }));
     expect(project.getByRole('img')).toHaveAttribute('src', expect.stringContaining('projects/cloudnet-results.webp'));
+  });
+
+  it('copies the email address with an accessible confirmation', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    vi.stubGlobal('navigator', { clipboard: { writeText } });
+    render(<App />);
+    fireEvent.click(screen.getByRole('button', { name: 'Copy email address' }));
+    expect(writeText).toHaveBeenCalledWith('harry.shudong.wang@gmail.com');
+    expect(await screen.findByText('Email address copied.')).toHaveAttribute('role', 'status');
+  });
+
+  it.each(['unavailable', 'denied'])('provides manual copying when clipboard is %s', async (mode) => {
+    vi.stubGlobal('navigator', mode === 'unavailable' ? {} : { clipboard: { writeText: vi.fn().mockRejectedValue(new Error('Permission denied')) } });
+    render(<App />);
+    fireEvent.click(screen.getByRole('button', { name: 'Copy email address' }));
+    expect(await screen.findByText(/Unable to copy automatically/)).toHaveAttribute('role', 'status');
+    expect(screen.getByRole('link', { name: 'harry.shudong.wang@gmail.com' })).toHaveAttribute('href', 'mailto:harry.shudong.wang@gmail.com');
   });
 });
